@@ -9,7 +9,7 @@ import SwiftUI
 
 struct PokemonTypeView: View {
     @State var types: [PokemonType]
-    
+
     var body: some View {
         HStack {
             ForEach(types, id: \.id) { type in

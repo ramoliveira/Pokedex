@@ -29,8 +29,8 @@ struct PokemonTypeView: View {
                             .padding(.all, 5)
                     }
                 }
-            }.frame(height: 25, alignment: .center)
-        }.frame(minWidth: 0, idealWidth: 100, maxWidth: 200, alignment: .leading)
+            }.frame(minWidth: 50, maxWidth: 100, minHeight: 25, maxHeight: 25, alignment: .center)
+        }
     }
 }
 

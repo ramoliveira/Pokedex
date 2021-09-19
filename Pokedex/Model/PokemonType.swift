@@ -8,16 +8,24 @@
 import Foundation
 
 enum PokemonType: String, Identifiable {
-    case grass = "Grass"
-    case fire = "Fire"
-    case water = "Water"
-    case bug = "Bug"
-    case normal = "Normal"
-    case poison = "Poison"
-    case electric = "Electric"
-    case ground = "Ground"
-    case fairy = "Fairy"
-    case fighting = "Fighting"
+    case bug        = "Bug"
+    case dark       = "Dark"
+    case dragon     = "Dragon"
+    case electric   = "Electric"
+    case fairy      = "Fairy"
+    case fighting   = "Fighting"
+    case fire       = "Fire"
+    case flying     = "Flying"
+    case ghost      = "Ghost"
+    case grass      = "Grass"
+    case ground     = "Ground"
+    case ice        = "Ice"
+    case normal     = "Normal"
+    case poison     = "Poison"
+    case psychic    = "Psychic"
+    case rock       = "Rock"
+    case steel      = "Steel"
+    case water      = "Water"
     
     var id: String {
         return String(describing: rawValue)
@@ -25,26 +33,42 @@ enum PokemonType: String, Identifiable {
     
     init?(rawValue: String) {
         switch rawValue.lowercased() {
-        case "grass":
-            self = .grass
-        case "fire":
-            self = .fire
-        case "water":
-            self = .water
-        case "bug":
+        case "Bug".lowercased():
             self = .bug
-        case "normal":
-            self = .normal
-        case "poison":
-            self = .poison
-        case "electric":
+        case "Dark".lowercased():
+            self = .dark
+        case "Dragon".lowercased():
+            self = .dragon
+        case "Electric".lowercased():
             self = .electric
-        case "ground":
-            self = .ground
-        case "fairy":
+        case "Fairy".lowercased():
             self = .fairy
-        case "fighting":
+        case "Fighting".lowercased():
             self = .fighting
+        case "Fire".lowercased():
+            self = .fire
+        case "Flying".lowercased():
+            self = .flying
+        case "Ghost".lowercased():
+            self = .ghost
+        case "Grass".lowercased():
+            self = .grass
+        case "Ground".lowercased():
+            self = .ground
+        case "Ice".lowercased():
+            self = .ice
+        case "Normal".lowercased():
+            self = .normal
+        case "Poison".lowercased():
+            self = .poison
+        case "Psychic".lowercased():
+            self = .psychic
+        case "Rock".lowercased():
+            self = .rock
+        case "Steel".lowercased():
+            self = .steel
+        case "Water".lowercased():
+            self = .water
         default:
             self = .normal
         }

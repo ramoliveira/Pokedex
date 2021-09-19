@@ -21,7 +21,7 @@ public struct Pokemon {
         self.height = height
         self.weight = weight
         self.sprite = sprite
-        self.types = types.map({ stringType in
+        self.types = types.unique.map({ stringType in
             return PokemonType(rawValue: stringType) ?? .normal
         })
     }

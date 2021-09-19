@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		3A762E5826F7F854004F64E8 /* Array+Unique.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3A762E5726F7F854004F64E8 /* Array+Unique.swift */; };
 		E98BBE6926F0059E00A5B640 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = E98BBE6826F0059E00A5B640 /* AppDelegate.swift */; };
 		E98BBE6B26F0059E00A5B640 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = E98BBE6A26F0059E00A5B640 /* SceneDelegate.swift */; };
 		E98BBE6D26F0059E00A5B640 /* HomeView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E98BBE6C26F0059E00A5B640 /* HomeView.swift */; };
@@ -52,6 +53,7 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		3A762E5726F7F854004F64E8 /* Array+Unique.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Array+Unique.swift"; sourceTree = "<group>"; };
 		E98BBE6526F0059E00A5B640 /* Pokedex.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Pokedex.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		E98BBE6826F0059E00A5B640 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		E98BBE6A26F0059E00A5B640 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -110,6 +112,22 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		3A762E5526F7F677004F64E8 /* Content */ = {
+			isa = PBXGroup;
+			children = (
+				E98BBE6E26F005A000A5B640 /* Assets.xcassets */,
+			);
+			path = Content;
+			sourceTree = "<group>";
+		};
+		3A762E5626F7F823004F64E8 /* Extensions */ = {
+			isa = PBXGroup;
+			children = (
+				3A762E5726F7F854004F64E8 /* Array+Unique.swift */,
+			);
+			path = Extensions;
+			sourceTree = "<group>";
+		};
 		E98BBE5C26F0059E00A5B640 = {
 			isa = PBXGroup;
 			children = (
@@ -133,16 +151,15 @@
 		E98BBE6726F0059E00A5B640 /* Pokedex */ = {
 			isa = PBXGroup;
 			children = (
-				E9C337E026F413CE00754B21 /* View */,
-				E9C337D926F412DB00754B21 /* Fonts */,
 				E98BBE7626F005A000A5B640 /* Info.plist */,
-				E98BBE6E26F005A000A5B640 /* Assets.xcassets */,
 				E98BBE7326F005A000A5B640 /* LaunchScreen.storyboard */,
 				E98BBEA926F035B800A5B640 /* Delegate */,
+				3A762E5626F7F823004F64E8 /* Extensions */,
+				E9C337D926F412DB00754B21 /* Fonts */,
 				E98BBE9E26F027C300A5B640 /* Model */,
-				E98BBE7026F005A000A5B640 /* Preview Content */,
-				E9A61BD026F2BCA70093DAF2 /* ViewModel */,
 				E98BBE9926F025EC00A5B640 /* Service */,
+				E9C337E026F413CE00754B21 /* View */,
+				E9A61BD026F2BCA70093DAF2 /* ViewModel */,
 			);
 			path = Pokedex;
 			sourceTree = "<group>";
@@ -233,6 +250,8 @@
 		E9C337E026F413CE00754B21 /* View */ = {
 			isa = PBXGroup;
 			children = (
+				E98BBE7026F005A000A5B640 /* Preview Content */,
+				3A762E5526F7F677004F64E8 /* Content */,
 				E98BBE6C26F0059E00A5B640 /* HomeView.swift */,
 				E9C337E126F413E000754B21 /* Style.swift */,
 				E9C337E826F4286100754B21 /* PokemonTypeView.swift */,
@@ -385,6 +404,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				E98BBE6926F0059E00A5B640 /* AppDelegate.swift in Sources */,
+				3A762E5826F7F854004F64E8 /* Array+Unique.swift in Sources */,
 				E98BBE6B26F0059E00A5B640 /* SceneDelegate.swift in Sources */,
 				E9A61BD226F2BCB40093DAF2 /* PokemonViewModel.swift in Sources */,
 				E98BBEA226F02A7000A5B640 /* PokemonResource.swift in Sources */,
@@ -569,7 +589,7 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_STYLE = Automatic;
-				DEVELOPMENT_ASSET_PATHS = "\"Pokedex/Preview Content\"";
+				DEVELOPMENT_ASSET_PATHS = "\"Pokedex/View/Preview Content\"";
 				DEVELOPMENT_TEAM = 467P9HLJ38;
 				ENABLE_PREVIEWS = YES;
 				INFOPLIST_FILE = Pokedex/Info.plist;
@@ -590,7 +610,7 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_STYLE = Automatic;
-				DEVELOPMENT_ASSET_PATHS = "\"Pokedex/Preview Content\"";
+				DEVELOPMENT_ASSET_PATHS = "\"Pokedex/View/Preview Content\"";
 				DEVELOPMENT_TEAM = 467P9HLJ38;
 				ENABLE_PREVIEWS = YES;
 				INFOPLIST_FILE = Pokedex/Info.plist;

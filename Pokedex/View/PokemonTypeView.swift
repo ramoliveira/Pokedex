@@ -16,7 +16,7 @@ struct PokemonTypeView: View {
                 ZStack {
                     Rectangle()
                         .cornerRadius(3)
-                        .foregroundColor(Style.TypeColor.color(type))
+                        .foregroundColor(Style.Color.Pokemon.type(type))
                     HStack {
                         Image(type.rawValue)
                             .resizable()
@@ -26,7 +26,6 @@ struct PokemonTypeView: View {
                         Text(type.rawValue)
                             .font(Style.Font.medium.font(12))
                             .foregroundColor(.white)
-                            .padding(.all, 5)
                     }
                 }
             }.frame(minWidth: 50, maxWidth: 100, minHeight: 25, maxHeight: 25, alignment: .center)

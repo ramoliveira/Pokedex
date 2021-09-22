@@ -7,7 +7,7 @@
 
 import SwiftUI
 
-public struct Pokemon {
+public struct Pokemon: Identifiable {
     public var id: Int
     var name: String
     var height: Int
@@ -28,10 +28,10 @@ public struct Pokemon {
     
     init() {
         self.id = 0
-        self.name = "".capitalized
+        self.name = "Test".capitalized
         self.height = 0
         self.weight = 0
         self.sprite = Image(uiImage: UIImage())
-        self.types = []
+        self.types = [.normal]
     }
 }

@@ -15,7 +15,7 @@ class PokemonServiceTests: XCTestCase {
     
     override func setUp() {
         super.setUp()
-        service = Container.shared.resolve(PokemonServicing.self)
+        service = SContainer.shared.resolve(PokemonServicing.self)
         cancelables = Set<AnyCancellable>()
     }
     

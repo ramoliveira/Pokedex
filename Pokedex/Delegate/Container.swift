@@ -7,23 +7,21 @@
 
 import Foundation
 
-protocol Injectable {
-    func register<Component: Any>(_ type: Component.Type, component: Component)
-    func resolve<Component>(_ type: Component.Type) -> Component?
+typealias Resolver = Container
+
+class Container {
+    var content: [String: Any] = [:]
+    
+    func register<Object: Any>(_ objectType: Object.Type, object: @escaping (Resolver) -> Object) {
+        content[String(describing: Object.self)] = object(self)
+    }
+    
+    func resolve<Object: Any>(_ objectType: Object.Type) -> Object? {
+        content[String(describing: Object.self)] as? Object
+    }
 }
 
-public class Container: Injectable {
-    static let shared = Container()
-    
-    private init() {}
-    
-    var components: [String:Any] = [:]
-    
-    func register<Component>(_ type: Component.Type, component: Component) {
-        components[String(describing: type)] = component
-    }
-    
-    func resolve<Component>(_ type: Component.Type) -> Component? {
-        return components[String(describing: type)] as? Component
-    }
+class SContainer: Container {
+    static var shared: SContainer = SContainer()
+    private override init() {}
 }

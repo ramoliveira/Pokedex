@@ -25,32 +25,37 @@ struct Style {
         }
     }
     
-    enum TextColor {
-        case description
-        case name
-        case id
+    struct Color {
+        struct Text {
+            static let description: SwiftUI.Color = SwiftUI.Color(red: 0.45, green: 0.45, blue: 0.46)
+            static let title: SwiftUI.Color = SwiftUI.Color(red: 0.09, green: 0.09, blue: 0.106)
+            static let name: SwiftUI.Color = SwiftUI.Color.white
+            static let id: SwiftUI.Color = SwiftUI.Color(red: 0.23, green: 0.23, blue: 0.27)
+        }
         
-        var color: Color {
-            switch self {
-            case .description:
-                return Color(red: 0.45, green: 0.45, blue: 0.46)
-            case .name:
-                return Color.white
-            case .id:
-                return Color(red: 0.23, green: 0.23, blue: 0.27)
+        struct View {
+            static let textField: SwiftUI.Color = SwiftUI.Color(red: 0.95, green: 0.95, blue: 0.95)
+        }
+        
+        struct Pokemon {
+            static func background(_ pokemonType: PokemonType) -> SwiftUI.Color {
+                SwiftUI.Color("Background-"+pokemonType.rawValue)
+            }
+            
+            static func type(_ pokemonType: PokemonType) -> SwiftUI.Color {
+                SwiftUI.Color("Type-"+pokemonType.rawValue)
             }
         }
     }
     
-    struct BackgroundColor {
-        static func color(_ pokemonType: PokemonType) -> Color {
-            Color("Background-" + pokemonType.rawValue)
-        }
-    }
-    
-    struct TypeColor {
-        static func color(_ pokemonType: PokemonType) -> Color {
-            Color("Type-" + pokemonType.rawValue)
+    struct Icon {
+        struct General {
+            static let back = Image("Back", bundle: .main)
+            static let filter = Image("Filter", bundle: .main)
+            static let front = Image("Front", bundle: .main)
+            static let generation = Image("Generation", bundle: .main)
+            static let search = Image("Search", bundle: .main)
+            static let sort = Image("Sort", bundle: .main)
         }
     }
 }

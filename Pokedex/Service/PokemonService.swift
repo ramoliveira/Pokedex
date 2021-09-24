@@ -18,13 +18,13 @@ public protocol PokemonServicing {
     func fetchPokemonsResources(startId: Int, finalId: Int) throws -> AnyPublisher<[PokemonResource], Error>
 }
 
-public struct PokemonService: PokemonServicing {
-    enum PokemonServiceError: Swift.Error {
-        case invalidRange
-        case invalidURL
-        case unknowed
-    }
-    
+public enum PokemonServiceError: Swift.Error {
+    case invalidRange
+    case invalidURL
+    case unknowed
+}
+
+public class PokemonService: PokemonServicing {
     public init() {}
     
     public func fetchImage(inUrl url: URL) -> AnyPublisher<Image, Error> {
@@ -40,8 +40,8 @@ public struct PokemonService: PokemonServicing {
         return Network(Endpoints.pokemonByName(name: name).url).request(PokemonResource.self)
     }
     
-    public func fetchPokemonsResources(startId: Int, finalId: Int) throws -> AnyPublisher<[PokemonResource], Error> {
-        guard startId < finalId else { throw PokemonServiceError.invalidRange }
+    public func fetchPokemonsResources(startId: Int, finalId: Int) -> AnyPublisher<[PokemonResource], Error> {
+        guard startId < finalId else { return Fail(error: PokemonServiceError.invalidRange).eraseToAnyPublisher()  }
         let ids = (startId...finalId).map { return $0 }
         return Publishers.MergeMany(ids.map(fetchPokemonResource(byId:)))
             .collect()
@@ -53,7 +53,7 @@ public struct PokemonService: PokemonServicing {
         return Network(Endpoints.pokemonByName(name: name).url).request(PokemonResource.self)
             .flatMap { resource -> AnyPublisher<Pokemon, Error> in
                 let url = URL(string: resource.sprites?.frontDefault ?? "")!
-                return fetchImage(inUrl: url).map { image in
+                return self.fetchImage(inUrl: url).map { image in
                     let types = resource.types ?? []
                     let stringTypes = types.compactMap { typeResource in
                         return typeResource.type?.name
@@ -74,7 +74,7 @@ public struct PokemonService: PokemonServicing {
         return Network(Endpoints.pokemonById(id: id).url).request(PokemonResource.self)
             .flatMap { resource -> AnyPublisher<Pokemon, Error> in
                 let url = URL(string: resource.sprites?.frontDefault ?? "")!
-                return fetchImage(inUrl: url).map { image in
+                return self.fetchImage(inUrl: url).map { image in
                     let types = resource.types ?? []
                     let stringTypes = types.compactMap { typeResource in
                         return typeResource.type?.name
@@ -92,7 +92,7 @@ public struct PokemonService: PokemonServicing {
     }
     
     public func fetchPokemons(startId: Int, finalId: Int) throws -> AnyPublisher<[Pokemon], Error> {
-        guard startId < finalId else { throw PokemonServiceError.invalidRange }
+        guard startId < finalId else { return Fail(error: PokemonServiceError.invalidRange).eraseToAnyPublisher() }
         let ids = (startId...finalId).map { return $0 }
         return Publishers.MergeMany(ids.map(fetchPokemon(byId:)))
             .collect()

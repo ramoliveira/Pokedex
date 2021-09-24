@@ -14,14 +14,16 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
 
 
     func scene(_ scene: UIScene, willConnectTo session: UISceneSession, options connectionOptions: UIScene.ConnectionOptions) {
-        // Starting Dependency Injection
-        startDepencies()
+        SContainer.shared.register(PokemonServicing.self) { _ in
+            PokemonService()
+        }
+        SContainer.shared.register(PokemonViewModel.self) { resolver in
+            PokemonViewModel(service: resolver.resolve(PokemonServicing.self)!)
+        }
         
-        // Create the SwiftUI view that provides the window contents.
         let contentView = HomeView()
             .preferredColorScheme(.light)
 
-        // Use a UIHostingController as window root view controller.
         if let windowScene = scene as? UIWindowScene {
             let window = UIWindow(windowScene: windowScene)
             window.rootViewController = UIHostingController(rootView: contentView)
@@ -43,12 +45,6 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
     }
 
     func sceneDidEnterBackground(_ scene: UIScene) {
-    }
-
-    func startDepencies() {
-        Container.shared.register(PokemonServicing.self, component: PokemonService())
-        guard let service = Container.shared.resolve(PokemonServicing.self) else { return }
-        Container.shared.register(PokemonViewModel.self, component: PokemonViewModel(service: service))
     }
 }
 

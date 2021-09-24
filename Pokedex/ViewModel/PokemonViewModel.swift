@@ -8,16 +8,28 @@
 import SwiftUI
 import Combine
 
-class PokemonViewModel: ObservableObject, Identifiable {
-    @Published var pokemon: Pokemon = Pokemon()
-    @Published var pokemons: [Pokemon] = []
+class PokemonViewModel: ObservableObject {
+    @Published var pokemon: String = ""
+    @Published var dataSource: [Pokemon] = []
     
-    private let service: PokemonServicing
-    private var cancellables: Set<AnyCancellable>
+    fileprivate var service: PokemonServicing
+    fileprivate var cancellables: Set<AnyCancellable>
     
     init(service: PokemonServicing) {
         self.service = service
         cancellables = Set<AnyCancellable>()
+        let scheduler = DispatchQueue(label: "PokemonViewModel")
+        $pokemon
+            .debounce(for: .seconds(0.5), scheduler: scheduler)
+            .compactMap({ $0.trimmingCharacters(in: .whitespaces) })
+            .sink(receiveValue: { pokemonName in
+                if pokemonName.isEmpty {
+                    self.fetchPokemons(fromId: 1, toId: 256)
+                } else {
+                    self.fetchPokemon(byName: pokemonName)
+                }
+            })
+            .store(in: &cancellables)
     }
     
     func fetchPokemon(byId id: Int) {
@@ -26,12 +38,29 @@ class PokemonViewModel: ObservableObject, Identifiable {
             .sink { [weak self] completion in
                 switch completion {
                 case .failure:
-                    self?.pokemon = Pokemon()
+                    self?.dataSource = []
                 case .finished:
                     break
                 }
             } receiveValue: { [weak self] pokemon in
-                self?.pokemon = pokemon
+                self?.dataSource.removeAll()
+                self?.dataSource.append(pokemon)
+            }.store(in: &cancellables)
+    }
+    
+    func fetchPokemon(byName name: String) {
+        service.fetchPokemon(byName: name.lowercased())
+            .receive(on: DispatchQueue.main)
+            .sink { [weak self] completion in
+                switch completion {
+                case .failure:
+                    self?.dataSource = []
+                case .finished:
+                    break
+                }
+            } receiveValue: { [weak self] pokemon in
+                self?.dataSource.removeAll()
+                self?.dataSource.append(pokemon)
             }.store(in: &cancellables)
     }
     
@@ -42,15 +71,15 @@ class PokemonViewModel: ObservableObject, Identifiable {
                     .sink { [weak self] completion in
                         switch completion {
                         case .failure:
-                            self?.pokemon = Pokemon()
+                            self?.dataSource = []
                         case .finished:
                             break
                         }
                     } receiveValue: { [weak self] pokemons in
-                        self?.pokemons = pokemons.sorted(by: { return $0.id < $1.id })
+                        self?.dataSource = pokemons.sorted(by: { return $0.id < $1.id })
                     }.store(in: &cancellables)
         } catch {
-            self.pokemons = []
+            self.dataSource = []
         }
     }
 }

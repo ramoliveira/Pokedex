@@ -33,15 +33,6 @@ public struct Network {
             .eraseToAnyPublisher()
     }
     
-//    public func requestImage() -> AnyPublisher<UIImage, Swift.Error> {
-//        urlSession
-//            .dataTaskPublisher(for: url)
-//            .map { UIImage(data: $0.data) }
-//            .replaceNil(with: UIImage())
-//            .mapError({ _ in Error.failedToFetchImage })
-//            .eraseToAnyPublisher()
-//    }
-    
     public func requestImage() -> AnyPublisher<Image, Swift.Error> {
         urlSession
             .dataTaskPublisher(for: url)

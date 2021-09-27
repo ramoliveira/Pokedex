@@ -11,19 +11,13 @@ In the future, new features will be add.
 
 ## What are those future features?
 
-- [ ] Search a pokémon by name or id.
-- [ ] Scan a picture of a pokémon and recognize it.
+- [X] Search a pokémon by name or id. (develop)
 - [ ] Make it more like to original design.
 - [ ] Update images been used.
 
-## What can be better (in code manner)?
+## Next Issues and Features
 
-This project also has it's vias of making me think about the code I made. So here goes some thoughts that later they will be turned into issues.
-
-### Next issues
-
-* I strongly believe that my Dependency Injection needs work. Because, my View layer is strongly attached to my ViewModel layer, making it hard to test. The best was to connect them by protocols. This lead to some problems like testing. I did a lot of tests with my Service layer, but I didn't on my View.
-* Create Mock classes to allow my HomeView render on canvas. Part of my project I programmed looking on my iPhone, because I couldn't see what I was doing.
+Currently, main branch is not updated, but is a stable version. Improvements and new features are been add on develop, also multiple issues have been opened. Feel free to check it out.
 
 ## Design
 

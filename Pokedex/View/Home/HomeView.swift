@@ -17,16 +17,21 @@ struct HomeView: View {
     
     var body: some View {
         NavigationView {
-            VStack(alignment: .leading) {
-                HomeHeaderView()
-                    .padding(.bottom, 25)
-                HomeSearchView(pokemon: $viewModel.pokemon)
-                    .padding(.bottom, 45)
-                if viewModel.dataSource.isEmpty {
-                    VStack(alignment: .center) {
-                        ProgressView()
-                    }
-                } else {
+            ZStack(alignment: .top) {
+                LinearGradient(gradient: Gradient(colors: [.gray, .clear]), startPoint: .top, endPoint: .bottom)
+                    .mask {
+                    Style.Asset.Pattern.pokeball
+                        .resizable()
+                        .opacity(0.05)
+                        .frame(width: .infinity, height: 414)
+                        .offset(x: 0, y: -190)
+                        .edgesIgnoringSafeArea(.all)
+                    }.offset(x: 0, y: -190)
+                VStack(alignment: .leading) {
+                    HomeHeaderView()
+                        .padding(.bottom, 25)
+                    HomeSearchView(pokemon: $viewModel.pokemon)
+                        .padding(.bottom, 45)
                     ScrollView(showsIndicators: false) {
                         LazyVStack {
                             ForEach(viewModel.dataSource, id: \.id) { pokemon in
@@ -34,8 +39,9 @@ struct HomeView: View {
                             }
                         }
                     }
-                }
-            }.padding(.horizontal, 40)
+                }.padding(.horizontal, 40)
+                .padding(.top, -50)
+            }
         }.navigationBarHidden(true)
         .edgesIgnoringSafeArea([.top, .bottom])
     }

@@ -40,7 +40,7 @@ struct HomeView: View {
                         }
                     }
                 }.padding(.horizontal, 40)
-                .padding(.top, -50)
+                .padding(.top, -80)
             }
         }.navigationBarHidden(true)
         .edgesIgnoringSafeArea([.top, .bottom])

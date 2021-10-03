@@ -12,7 +12,7 @@ struct HomeSearchView: View {
     
     var body: some View {
         HStack {
-            Style.Icon.General.search
+            Style.Asset.General.search
                 .foregroundColor(Color(red: 0.455, green: 0.455, blue: 0.463))
                 .padding(EdgeInsets(top: 20, leading: 25, bottom: 20, trailing: 10))
             TextField("What Pokemon are you looking for?", text: $pokemon)

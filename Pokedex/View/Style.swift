@@ -48,7 +48,7 @@ struct Style {
         }
     }
     
-    struct Icon {
+    struct Asset {
         struct General {
             static let back = Image("Back", bundle: .main)
             static let filter = Image("Filter", bundle: .main)
@@ -56,6 +56,22 @@ struct Style {
             static let generation = Image("Generation", bundle: .main)
             static let search = Image("Search", bundle: .main)
             static let sort = Image("Sort", bundle: .main)
+        }
+        
+        struct Height {
+            static let tall = Image("Tall", bundle: Bundle.main)
+            static let medium = Image("Medium", bundle: .main)
+            static let small = Image("Small", bundle: .main)
+        }
+        
+        struct Weight {
+            static let heavy = Image("Heavy", bundle: .main)
+            static let normal = Image("Normal", bundle: .main)
+            static let light = Image("Light", bundle: .main)
+        }
+        
+        struct Pattern {
+            static let pokeball = Image("Pokeball", bundle: .main)
         }
     }
 }

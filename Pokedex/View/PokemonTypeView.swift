@@ -18,7 +18,7 @@ struct PokemonTypeView: View {
                         .cornerRadius(3)
                         .foregroundColor(Style.Color.Pokemon.type(type))
                     HStack {
-                        Image(type.rawValue)
+                        Image("Type-"+type.rawValue)
                             .resizable()
                             .foregroundColor(.white)
                             .frame(width: 15, height: 15, alignment: .center)

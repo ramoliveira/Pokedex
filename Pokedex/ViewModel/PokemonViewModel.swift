@@ -18,13 +18,17 @@ class PokemonViewModel: ObservableObject {
     init(service: PokemonServicing) {
         self.service = service
         cancellables = Set<AnyCancellable>()
+        setupBinding()
+    }
+    
+    func setupBinding() {
         let scheduler = DispatchQueue(label: "PokemonViewModel")
         $pokemon
             .debounce(for: .seconds(0.5), scheduler: scheduler)
             .compactMap({ $0.trimmingCharacters(in: .whitespaces) })
             .sink(receiveValue: { pokemonName in
                 if pokemonName.isEmpty {
-                    self.fetchPokemons(fromId: 1, toId: 256)
+                    self.fetchPokemons(fromId: 1, toId: 10)
                 } else {
                     self.fetchPokemon(byName: pokemonName)
                 }

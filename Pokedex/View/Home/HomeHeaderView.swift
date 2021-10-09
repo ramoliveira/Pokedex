@@ -8,16 +8,35 @@
 import SwiftUI
 
 struct HomeHeaderView: View {
+    @Binding var showGeneration: Bool
+    @Binding var showFilter: Bool
+    @Binding var showSort: Bool
+    
     var body: some View {
         VStack {
             VStack(alignment: .trailing) {
                 HStack {
                     Spacer()
-                    Style.Asset.General.generation
-                        .padding(.trailing, 10)
-                    Style.Asset.General.sort
-                        .padding(.trailing, 10)
-                    Style.Asset.General.filter
+                    Button {
+                        showGeneration = !showGeneration
+                    } label: {
+                        Style.Asset.General.generation
+                            .padding(.trailing, 10)
+                            .foregroundColor(.black)
+                    }
+                    Button {
+                        showSort = !showSort
+                    } label: {
+                        Style.Asset.General.sort
+                            .padding(.trailing, 10)
+                            .foregroundColor(.black)
+                    }
+                    Button {
+                        showFilter = !showFilter
+                    } label: {
+                        Style.Asset.General.filter
+                            .foregroundColor(.black)
+                    }
                 }
             }.padding(.bottom, 15)
             HStack {
@@ -37,7 +56,11 @@ struct HomeHeaderView: View {
 }
 
 struct HomeHeaderView_Previews: PreviewProvider {
+    @State static var sG: Bool = false
+    @State static var sF: Bool = false
+    @State static var sS: Bool = false
+    
     static var previews: some View {
-        HomeHeaderView()
+        HomeHeaderView(showGeneration: $sG, showFilter: $sF, showSort: $sS)
     }
 }

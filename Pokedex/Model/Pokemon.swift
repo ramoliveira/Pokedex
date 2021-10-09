@@ -34,4 +34,13 @@ public struct Pokemon: Identifiable {
         self.sprite = Image(uiImage: UIImage())
         self.types = [.normal]
     }
+    
+    #if DEBUG
+    static let mock = Pokemon(id: 132,
+                              name: "Ditto",
+                              height: 3,
+                              weight: 40,
+                              sprite: Image("Ditto"),
+                              types: ["Normal"])
+    #endif
 }

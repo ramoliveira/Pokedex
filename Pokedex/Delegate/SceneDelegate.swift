@@ -21,7 +21,7 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
             PokemonViewModel(service: resolver.resolve(PokemonServicing.self)!)
         }
         
-        let contentView = HomeView()
+        let contentView = Home()
             .preferredColorScheme(.light)
 
         if let windowScene = scene as? UIWindowScene {

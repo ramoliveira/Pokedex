@@ -22,30 +22,32 @@ struct Home: View {
     var body: some View {
         NavigationView {
             ZStack(alignment: .top) {
-                Style.Asset.Pattern.pokeball
-                    .resizable()
-                    .frame(height: 414, alignment: .center)
-                    .opacity(0.05)
-                    .offset(x: 0, y: -190)
-                    .edgesIgnoringSafeArea(.all)
+                LinearGradient(gradient: Gradient(colors: [Color(red: 0.96, green: 0.96, blue: 0.96), .white]), startPoint: .top, endPoint: .bottom)
+                    .mask {
+                        Style.Asset.Pattern.pokeball
+                            .resizable()
+                            .frame(width: 414, height: 414)
+                            .offset(x: 0, y: -190)
+                            .edgesIgnoringSafeArea(.all)
+                    }.offset(x: 0, y: -240)
                 VStack(alignment: .leading) {
                     VStack(alignment: .trailing) {
                         HStack {
                             Spacer()
                             Button {
-                                showGeneration = !showGeneration
+                                showGeneration.toggle()
                             } label: {
                                 Style.Asset.General.generation
                                     .foregroundColor(.black)
-                            }
+                            }.padding(.trailing, 20)
                             Button {
-                                showSort = !showSort
+                                showSort.toggle()
                             } label: {
                                 Style.Asset.General.sort
                                     .foregroundColor(.black)
-                            }
+                            }.padding(.trailing, 20)
                             Button {
-                                showFilter = !showFilter
+                                showFilter.toggle()
                             } label: {
                                 Style.Asset.General.filter
                                     .foregroundColor(.black)

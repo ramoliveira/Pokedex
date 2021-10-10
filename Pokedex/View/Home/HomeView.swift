@@ -23,16 +23,10 @@ struct HomeView: View {
             ZStack(alignment: .top) {
                 PokeballHeaderView()
                 VStack(alignment: .leading) {
-                    HomeHeaderView(showGeneration: $showGeneration,
-                                   showFilter: $showFilter,
-                                   showSort: $showSort)
-                        .padding(.bottom, 25)
-                    HomeSearchView(pokemon: $viewModel.pokemon)
-                        .padding(.bottom, 45)
                     ScrollView(showsIndicators: false) {
                         LazyVStack {
                             ForEach(viewModel.dataSource, id: \.id) { pokemon in
-                                PokemonCellView(pokemon: pokemon)
+                                Text(pokemon.name)
                             }
                         }
                     }

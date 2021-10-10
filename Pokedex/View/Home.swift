@@ -29,7 +29,6 @@ struct Home: View {
                     .offset(x: 0, y: -190)
                     .edgesIgnoringSafeArea(.all)
                 VStack(alignment: .leading) {
-                    
                     VStack(alignment: .trailing) {
                         HStack {
                             Spacer()
@@ -77,13 +76,14 @@ struct Home: View {
                     
                     List {
                         ForEach(pokemons) { pokemon in
-                            ZStack {
-                                VStack {
-                                    Text(pokemon.name)
-                                }
-                            }.frame(height: 115)
+                            Row(pokemon: pokemon)
+                                .listRowInsets(EdgeInsets())
                         }
                     }.cornerRadius(10)
+                    .listStyle(PlainListStyle())
+                    .onAppear {
+                        UITableView.appearance().backgroundColor = .clear
+                    }
                 }.padding(.horizontal, 40)
             }.sheet(isPresented: $showGeneration) {
                 Text("Generation")

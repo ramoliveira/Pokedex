@@ -72,6 +72,8 @@ struct Style {
         
         struct Pattern {
             static let pokeball = Image("Pokeball", bundle: .main)
+            static let grid6x3 = Image("6x3", bundle: .main)
+            static let grid10x5 = Image("10x5", bundle: .main)
         }
     }
 }

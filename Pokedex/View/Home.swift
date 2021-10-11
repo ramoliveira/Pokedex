@@ -16,7 +16,6 @@ struct Home: View {
     @State var showGeneration: Bool = false
     @State var showFilter: Bool = false
     @State var showSort: Bool = false
-    
     @State var input: String = ""
     
     var body: some View {
@@ -40,6 +39,7 @@ struct Home: View {
                                 Style.Asset.General.generation
                                     .foregroundColor(.black)
                             }.padding(.trailing, 20)
+                            
                             Button {
                                 showSort.toggle()
                             } label: {
@@ -87,13 +87,20 @@ struct Home: View {
                         UITableView.appearance().backgroundColor = .clear
                     }
                 }.padding(.horizontal, 40)
-            }.sheet(isPresented: $showGeneration) {
-                Text("Generation")
-            }.sheet(isPresented: $showFilter) {
-                Text("Filter")
-            }.sheet(isPresented: $showSort) {
-                Text("Sort")
-            }.navigationBarTitleDisplayMode(.inline)
+            }
+//            .sheet(isPresented: $showGeneration) {
+//                VStack(alignment: .leading) {
+//                    Text("Generation")
+//                        .foregroundColor(.white)
+//                }
+//                .frame(maxWidth: .infinity, maxHeight: .infinity)
+//                .background(Color.black)
+//            }.sheet(isPresented: $showFilter) {
+//                Text("Filter")
+//            }.sheet(isPresented: $showSort) {
+//                Text("Sort")
+//            }
+            .navigationBarTitleDisplayMode(.inline)
             .navigationBarHidden(true)
         }
     }

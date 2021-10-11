@@ -8,92 +8,83 @@
 import SwiftUI
 
 struct Modal<Content: View>: View {
-    @GestureState private var dragState = DragState.inactive
-    @State var position = ModalPosition.top
+    @Binding var isShowing: Bool
+    
+    @State private var isDragging: Bool = false
+    
+    @State private var currentHeight: CGFloat = 400
+    let minHeight: CGFloat = 400
+    let maxHeight: CGFloat = 700
     
     var content: () -> Content
     
     var body: some View {
-        let drag = DragGesture()
-            .updating($dragState) { drag, state, transaction in
-                state = .dragging(translation: drag.translation)
-            }.onEnded(dragEnded(_:))
-        return self.content()
-            .frame(width: UIScreen.main.bounds.width, height: UIScreen.main.bounds.height)
-            .background(Color.white)
-            .cornerRadius(10.0)
-            .shadow(color: Color(.sRGBLinear, white: 0, opacity: 0.13), radius: 10.0)
-            .offset(y: self.position.rawValue + self.dragState.translation.height)
-            .animation(self.dragState.isDragging ? nil : .interpolatingSpring(stiffness: 300.0, damping: 30.0, initialVelocity: 10.0))
-            .gesture(drag)
+        ZStack(alignment: .bottom) {
+            if isShowing {
+                Color.black
+                    .opacity(0.2)
+                    .ignoresSafeArea()
+                    .onTapGesture {
+                        isShowing = false
+                    }
+                
+                VStack {
+                    Capsule()
+                        .frame(width: 80, height: 6, alignment: .center)
+                        .frame(maxWidth: .infinity)
+                        .foregroundColor(.white)
+                        .background(Color.clear)
+                    
+                    self.content()
+                        .frame(height: currentHeight)
+                        .frame(maxWidth: .infinity)
+                        .background(
+                            Rectangle()
+                                .foregroundColor(.white)
+                                .cornerRadius(30, corners: [.topLeft, .topRight])
+                        )
+                }
+                .gesture(dragGesture)
+                .frame(maxWidth: .infinity)
+                .animation(isDragging ? nil : .easeInOut(duration: 0.45))
+                .transition(.move(edge: .bottom))
+            }
+        }
+        .frame(maxWidth: .infinity, maxHeight: .infinity, alignment: .bottom)
+        .ignoresSafeArea()
     }
     
-    private func dragEnded(_ drag: DragGesture.Value) {
-        let vDirection = drag.predictedEndLocation.y - drag.location.y
-        let modalTopEdgeLocation = self.position.rawValue + drag.translation.height
-        let positionAbove: ModalPosition
-        let positionBellow: ModalPosition
-        let closestPosition: ModalPosition
-        
-        if modalTopEdgeLocation <= ModalPosition.middle.rawValue {
-            positionAbove = .top
-            positionBellow = .middle
-        } else {
-            positionAbove = .middle
-            positionBellow = .bottom
-        }
-        
-        if (modalTopEdgeLocation - positionAbove.rawValue) < (positionBellow.rawValue - modalTopEdgeLocation) {
-            closestPosition = positionAbove
-        } else {
-            closestPosition = positionBellow
-        }
-        
-        if vDirection > 0 {
-            self.position = positionBellow
-        } else if vDirection < 0 {
-            self.position = positionAbove
-        } else {
-            self.position = closestPosition
-        }
-    }
-}
-
-enum ModalPosition: CGFloat {
-    case top = 100
-    case middle = 500
-    case bottom = 850
-}
-
-fileprivate enum DragState {
-    case inactive
-    case dragging(translation: CGSize)
+    @State private var prevDragTranslation = CGSize.zero
     
-    var translation: CGSize {
-        switch self {
-        case .inactive:
-            return .zero
-        case .dragging(let translation):
-            return translation
-        }
-    }
-    
-    var isDragging: Bool {
-        switch self {
-        case .inactive:
-            return false
-        case .dragging:
-            return true
-        }
+    var dragGesture: some Gesture {
+        DragGesture(minimumDistance: 0, coordinateSpace: .global)
+            .onChanged { value in
+                if !isDragging {
+                    isDragging = true
+                }
+                
+                let dragAmmount = value.translation.height - prevDragTranslation.height
+                if currentHeight > maxHeight || currentHeight < minHeight {
+                    currentHeight -= dragAmmount / 6
+                } else {
+                    currentHeight -= dragAmmount
+                }
+                prevDragTranslation = value.translation
+            }
+            .onEnded { value in
+                prevDragTranslation = .zero
+                isDragging = false
+                if currentHeight > maxHeight {
+                    currentHeight = maxHeight
+                } else if currentHeight < minHeight {
+                    currentHeight = minHeight
+                }
+            }
     }
 }
 
 struct Modal_Previews: PreviewProvider {
     static var previews: some View {
-        Modal {
-            VStack {
-                Text("Testing modal")
-            }
-        }
+        Home()
     }
 }

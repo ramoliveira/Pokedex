@@ -87,19 +87,11 @@ struct Home: View {
                         UITableView.appearance().backgroundColor = .clear
                     }
                 }.padding(.horizontal, 40)
+                
+                Modal(isShowing: $showGeneration) {
+                    Text("Generation")
+                }
             }
-//            .sheet(isPresented: $showGeneration) {
-//                VStack(alignment: .leading) {
-//                    Text("Generation")
-//                        .foregroundColor(.white)
-//                }
-//                .frame(maxWidth: .infinity, maxHeight: .infinity)
-//                .background(Color.black)
-//            }.sheet(isPresented: $showFilter) {
-//                Text("Filter")
-//            }.sheet(isPresented: $showSort) {
-//                Text("Sort")
-//            }
             .navigationBarTitleDisplayMode(.inline)
             .navigationBarHidden(true)
         }

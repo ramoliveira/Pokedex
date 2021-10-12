@@ -11,6 +11,8 @@
 		3A17DA312713433500216CFE /* Modal.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3A17DA302713433500216CFE /* Modal.swift */; };
 		3A17DA332714812700216CFE /* FilterView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3A17DA322714812600216CFE /* FilterView.swift */; };
 		3A762E5826F7F854004F64E8 /* Array+Unique.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3A762E5726F7F854004F64E8 /* Array+Unique.swift */; };
+		3A9FBF032715C9D400AFF3D3 /* CustomSlider.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3A9FBF022715C9D400AFF3D3 /* CustomSlider.swift */; };
+		3A9FBF052716264B00AFF3D3 /* TwoHandleSlider.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3A9FBF042716264A00AFF3D3 /* TwoHandleSlider.swift */; };
 		3AA2B34626FBD58900578B72 /* PokemonViewModelMock.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3AA2B34526FBD58900578B72 /* PokemonViewModelMock.swift */; };
 		3AAED7302714A555001A514E /* View+RoundCorners.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3AAED72F2714A555001A514E /* View+RoundCorners.swift */; };
 		3AC75321271210A100B6C40E /* Home.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3AC75320271210A100B6C40E /* Home.swift */; };
@@ -63,6 +65,8 @@
 		3A17DA302713433500216CFE /* Modal.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Modal.swift; sourceTree = "<group>"; };
 		3A17DA322714812600216CFE /* FilterView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FilterView.swift; sourceTree = "<group>"; };
 		3A762E5726F7F854004F64E8 /* Array+Unique.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Array+Unique.swift"; sourceTree = "<group>"; };
+		3A9FBF022715C9D400AFF3D3 /* CustomSlider.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomSlider.swift; sourceTree = "<group>"; };
+		3A9FBF042716264A00AFF3D3 /* TwoHandleSlider.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TwoHandleSlider.swift; sourceTree = "<group>"; };
 		3AA2B34526FBD58900578B72 /* PokemonViewModelMock.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PokemonViewModelMock.swift; sourceTree = "<group>"; };
 		3AAED72F2714A555001A514E /* View+RoundCorners.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "View+RoundCorners.swift"; sourceTree = "<group>"; };
 		3AC75320271210A100B6C40E /* Home.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Home.swift; sourceTree = "<group>"; };
@@ -289,6 +293,8 @@
 				3A17DA2E271293FD00216CFE /* HomeRow.swift */,
 				3A17DA302713433500216CFE /* Modal.swift */,
 				3A17DA322714812600216CFE /* FilterView.swift */,
+				3A9FBF022715C9D400AFF3D3 /* CustomSlider.swift */,
+				3A9FBF042716264A00AFF3D3 /* TwoHandleSlider.swift */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -456,9 +462,11 @@
 				E98BBE6D26F0059E00A5B640 /* HomeView.swift in Sources */,
 				E98BBEA026F0285C00A5B640 /* Endpoints.swift in Sources */,
 				E9A61BD426F2BFAB0093DAF2 /* Pokemon.swift in Sources */,
+				3A9FBF032715C9D400AFF3D3 /* CustomSlider.swift in Sources */,
 				E98BBEA626F0341A00A5B640 /* PokemonTypeResource.swift in Sources */,
 				E9C337E726F41F0800754B21 /* PokemonType.swift in Sources */,
 				E98BBEA826F034A500A5B640 /* PokemonSpritesResource.swift in Sources */,
+				3A9FBF052716264B00AFF3D3 /* TwoHandleSlider.swift in Sources */,
 				E98BBEB126F0405000A5B640 /* Container.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

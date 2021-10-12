@@ -8,15 +8,13 @@
 import SwiftUI
 
 struct FilterView: View {
-    @State var lowerBound: Double = 50
-    @State var upperBound: Double = 200
-    
     var body: some View {
         VStack(alignment: .leading) {
             Group {
                 Text("Filter")
                     .font(Style.Font.bold.font(26))
                     .padding(.bottom, 5)
+                    .padding(.top, 30)
                 Text("Use advanced search to explore Pokémon by type, weakness, height and more!")
                     .font(Style.Font.regular.font(16))
                     .foregroundColor(Color(red: 0.45, green: 0.45, blue: 0.46))
@@ -24,6 +22,7 @@ struct FilterView: View {
                     .padding(.bottom, 15)
             }
             
+            //MARK: - Types
             Group {
                 Text("Types")
                     .font(Style.Font.bold.font(16))
@@ -44,6 +43,7 @@ struct FilterView: View {
                 }.padding(.bottom, 15)
             }
             
+            //MARK: - Weaknesses
             Group {
                 Text("Weaknesses")
                     .font(Style.Font.bold.font(16))
@@ -64,6 +64,7 @@ struct FilterView: View {
                 }.padding(.bottom, 15)
             }
             
+            //MARK: - Heights
             Group {
                 Text("Heights")
                     .font(Style.Font.bold.font(16))
@@ -98,6 +99,7 @@ struct FilterView: View {
                 }.padding(.bottom, 15)
             }
             
+            //MARK: - Weights
             Group {
                 Text("Weights")
                     .font(Style.Font.bold.font(16))
@@ -132,41 +134,45 @@ struct FilterView: View {
                 }.padding(.bottom, 15)
             }
             
-            
+            //MARK: - Number Range
             Group {
                 Text("Number Range")
                     .font(Style.Font.bold.font(16))
                     .padding(.bottom, 20)
                 
-                ZStack(alignment: .center) {
-                    Capsule()
-                        .foregroundColor(Color(red: 0.95, green: 0.95, blue: 0.95))
-                        .frame(height: 8)
-                    Capsule()
-                        .foregroundColor(Color(red: 0.92, green: 0.36, blue: 0.38))
-                        .frame(height: 8)
-                        .frame(maxWidth: 52) // Here
-                    HStack(spacing: 10) { // Here
-                        VStack {
-                            Circle()
-                                .strokeBorder(Color(red: 0.92, green: 0.36, blue: 0.38), lineWidth: 4)
-                                .background(Color.white)
-                                .frame(width: 20, height: 20)
-                            Text("200")
-                                .font(Style.Font.medium.font(12)).foregroundColor(Color(red: 0.45, green: 0.45, blue: 0.46))
-                        }.offset(x: 0, y: 10)
-                        VStack {
-                            Circle()
-                                .strokeBorder(Color(red: 0.92, green: 0.36, blue: 0.38), lineWidth: 4)
-                                .background(Color.white)
-                                .frame(width: 20, height: 20)
-                            Text("200")
-                                .font(Style.Font.medium.font(12)).foregroundColor(Color(red: 0.45, green: 0.45, blue: 0.46))
-                        }.offset(x: 0, y: 10)
-                    }
-                }
+                CustomSlider(percentage: 50)
+                    .padding(.bottom, 40)
+                
+//                ZStack(alignment: .center) {
+//                    Capsule()
+//                        .foregroundColor(Color(red: 0.95, green: 0.95, blue: 0.95))
+//                        .frame(height: 8)
+//                    Capsule()
+//                        .foregroundColor(Color(red: 0.92, green: 0.36, blue: 0.38))
+//                        .frame(height: 8)
+//                        .frame(maxWidth: 52) // Here
+//                    HStack(spacing: 10) { // Here
+//                        VStack {
+//                            Circle()
+//                                .strokeBorder(Color(red: 0.92, green: 0.36, blue: 0.38), lineWidth: 4)
+//                                .background(Color.white)
+//                                .frame(width: 20, height: 20)
+//                            Text("200")
+//                                .font(Style.Font.medium.font(12)).foregroundColor(Color(red: 0.45, green: 0.45, blue: 0.46))
+//                        }.offset(x: 0, y: 10)
+//                        VStack {
+//                            Circle()
+//                                .strokeBorder(Color(red: 0.92, green: 0.36, blue: 0.38), lineWidth: 4)
+//                                .background(Color.white)
+//                                .frame(width: 20, height: 20)
+//                            Text("200")
+//                                .font(Style.Font.medium.font(12)).foregroundColor(Color(red: 0.45, green: 0.45, blue: 0.46))
+//                        }.offset(x: 0, y: 10)
+//                    }
+//                }
             }
             
+            //MARK: - Buttons
             Group {
                 HStack(alignment: .center, spacing: 14)  {
                     Button {
@@ -189,7 +195,7 @@ struct FilterView: View {
                             .background(Color(red: 0.92, green: 0.36, blue: 0.38))
                             .cornerRadius(10)
                     }
-                }.padding(.top, 50)
+                }
             }
             
         }.padding(.horizontal, 40)

@@ -64,6 +64,7 @@ struct Home: View {
                         .font(Style.Font.regular.font(16))
                         .padding(.bottom, 25)
                     
+                    //MARK: - Input
                     HStack {
                         Style.Asset.General.search
                             .foregroundColor(Color(red: 0.45, green: 0.45, blue: 0.46))
@@ -76,9 +77,10 @@ struct Home: View {
                     .cornerRadius(10)
                     .padding(.bottom, 20)
                     
+                    //MARK: - List
                     List {
                         ForEach(pokemons) { pokemon in
-                            Row(pokemon: pokemon)
+                            HomeRow(pokemon: pokemon)
                                 .listRowInsets(EdgeInsets())
                         }
                     }.cornerRadius(10)
@@ -88,8 +90,15 @@ struct Home: View {
                     }
                 }.padding(.horizontal, 40)
                 
+                //MARK: - Modals
                 Modal(isShowing: $showGeneration) {
                     Text("Generation")
+                }
+                Modal(isShowing: $showFilter) {
+                    Text("Filter")
+                }
+                Modal(isShowing: $showSort) {
+                    Text("Sort")
                 }
             }
             .navigationBarTitleDisplayMode(.inline)

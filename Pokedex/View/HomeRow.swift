@@ -1,5 +1,5 @@
 //
-//  Row.swift
+//  HomeRow.swift
 //  Pokedex
 //
 //  Created by Ramon Almeida on 10/10/21.
@@ -7,7 +7,7 @@
 
 import SwiftUI
 
-struct Row: View {
+struct HomeRow: View {
     let pokemon: Pokemon
     
     var body: some View {
@@ -57,8 +57,8 @@ struct Row: View {
     }
 }
 
-struct Row_Previews: PreviewProvider {
+struct HomeRow_Previews: PreviewProvider {
     static var previews: some View {
-        Row(pokemon: Pokemon.mock)
+        HomeRow(pokemon: Pokemon.mock)
     }
 }

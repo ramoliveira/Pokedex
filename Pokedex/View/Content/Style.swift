@@ -45,6 +45,10 @@ struct Style {
             static func type(_ pokemonType: PokemonType) -> SwiftUI.Color {
                 SwiftUI.Color("Type-"+pokemonType.rawValue)
             }
+            
+            static func type(_ pokemonType: String) -> SwiftUI.Color {
+                SwiftUI.Color("Type-"+pokemonType)
+            }
         }
     }
     

@@ -13,8 +13,8 @@ struct Modal<Content: View>: View {
     @State private var isDragging: Bool = false
     
     @State private var currentHeight: CGFloat = 400
-    let minHeight: CGFloat = 400
-    let maxHeight: CGFloat = 700
+    let minHeight: CGFloat = 414
+    let maxHeight: CGFloat = 800
     
     var content: () -> Content
     
@@ -22,7 +22,7 @@ struct Modal<Content: View>: View {
         ZStack(alignment: .bottom) {
             if isShowing {
                 Color.black
-                    .opacity(0.2)
+                    .opacity(0.3)
                     .ignoresSafeArea()
                     .onTapGesture {
                         isShowing = false
@@ -77,7 +77,7 @@ struct Modal<Content: View>: View {
                 if currentHeight > maxHeight {
                     currentHeight = maxHeight
                 } else if currentHeight < minHeight {
-                    currentHeight = minHeight
+                    isShowing = false
                 }
             }
     }

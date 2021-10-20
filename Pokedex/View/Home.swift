@@ -34,20 +34,26 @@ struct Home: View {
                         HStack {
                             Spacer()
                             Button {
-                                showGeneration.toggle()
+                                withAnimation {
+                                    showGeneration = true
+                                }
                             } label: {
                                 Style.Asset.General.generation
                                     .foregroundColor(.black)
                             }.padding(.trailing, 20)
                             
                             Button {
-                                showSort.toggle()
+                                withAnimation {
+                                    showSort = true
+                                }
                             } label: {
                                 Style.Asset.General.sort
                                     .foregroundColor(.black)
                             }.padding(.trailing, 20)
                             Button {
-                                showFilter.toggle()
+                                withAnimation {
+                                    showFilter = true
+                                }
                             } label: {
                                 Style.Asset.General.filter
                                     .foregroundColor(.black)
@@ -91,22 +97,18 @@ struct Home: View {
                 }.padding(.horizontal, 40)
                 
                 //MARK: - Modals
-                Modal(isShowing: $showGeneration) {
+                Sheet(isShowing: $showGeneration) {
                     Text("Generation")
+                        .frame(maxWidth: .infinity, maxHeight: UIScreen.main.bounds.height * 0.8)
                 }
-//                Modal(isShowing: $showFilter) {
-//                    FilterView()
-//                }
                 Sheet(isShowing: $showFilter) {
                     FilterView()
                 }
-                Modal(isShowing: $showSort) {
+                Sheet(isShowing: $showSort) {
                     Text("Sort")
+                        .frame(maxWidth: .infinity, maxHeight: UIScreen.main.bounds.height * 0.8)
                 }
             }
-//            .sheet(isPresented: $showFilter) {
-//                FilterView()
-//            }
             .navigationBarTitleDisplayMode(.inline)
             .navigationBarHidden(true)
         }

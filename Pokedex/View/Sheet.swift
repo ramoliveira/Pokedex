@@ -7,62 +7,20 @@
 
 import SwiftUI
 
-enum SheetMode: Equatable {
-    case none
-    case half
-    case full
-}
-
 struct Sheet<Content: View>: View {
-    @State var mode: SheetMode = .half
+    private enum Mode: Equatable {
+        case half
+        case full
+    }
+    
+    @State private var mode: Mode = .half
     @Binding var isShowing: Bool
     
     let content: () -> Content
     
-    init(isShowing: Binding<Bool>, @ViewBuilder content: @escaping ()->Content) {
+    init(isShowing: Binding<Bool>, @ViewBuilder content: @escaping () -> Content) {
         self._isShowing = isShowing
         self.content = content
-    }
-    
-    var xOffset: CGFloat {
-        switch self.mode {
-        case .none:
-            return UIScreen.main.bounds.height
-        case .half:
-            return UIScreen.main.bounds.height * 0.5
-        case .full:
-            return .zero
-        }
-    }
-    
-    var drag: some Gesture {
-        DragGesture(minimumDistance: 0, coordinateSpace: .global)
-            .onChanged { value in
-                let dy = value.predictedEndLocation.y - value.startLocation.y
-                if dy > 0 {
-                    self.downMode()
-                } else if dy < 0 {
-                    self.upMode()
-                }
-            }
-    }
-    
-    func upMode() {
-        switch self.mode {
-        case .none:
-            self.mode = .half
-        default:
-            self.mode =  .full
-        }
-    }
-    
-    func downMode() {
-        switch self.mode {
-        case .full:
-            self.mode = .half
-        default:
-            self.mode = .none
-        }
     }
     
     var body: some View {
@@ -73,18 +31,66 @@ struct Sheet<Content: View>: View {
                     .ignoresSafeArea()
                     .onTapGesture {
                         withAnimation {
-                            isShowing = false
+                            self.mode = .half
+                            self.isShowing = false
                         }
                     }
-                content()
-                    .clipShape(RoundedRectangle(cornerRadius: 20, style: .continuous))
-                    .offset(x: 0, y: xOffset)
-                    .animation(.spring(), value: mode)
-                    .gesture(drag)
+                VStack {
+                    Capsule()
+                        .frame(width: 80, height: 6, alignment: .center)
+                        .frame(maxWidth: .infinity)
+                        .foregroundColor(.white)
+                        .background(Color.clear)
+                    content()
+                        .background(Color.white)
+                        .clipShape(RoundedRectangle(cornerRadius: 20, style: .continuous))
+                }
+                .offset(x: 0, y: xOffset)
+                .animation(.spring(), value: mode)
+                .transition(.move(edge: .bottom))
+                .gesture(drag)
             }
         }
         .frame(maxWidth: .infinity, maxHeight: .infinity)
         .edgesIgnoringSafeArea(.all)
+    }
+    
+    var xOffset: CGFloat {
+        switch self.mode {
+        case .half:
+            return UIScreen.main.bounds.height * 0.5
+        case .full:
+            return .zero
+        }
+    }
+    
+    var drag: some Gesture {
+        DragGesture(minimumDistance: 0, coordinateSpace: .global)
+            .onEnded { value in
+                let dy = value.predictedEndLocation.y - value.startLocation.y
+                if dy > 0 {
+                    self.downMode()
+                } else if dy < 0 {
+                    self.upMode()
+                }
+            }
+    }
+    
+    func upMode() {
+        withAnimation {
+            self.mode = .full
+        }
+    }
+    
+    func downMode() {
+        withAnimation {
+            switch self.mode {
+            case .full:
+                self.mode = .half
+            default:
+                self.isShowing = false
+            }
+        }
     }
 }
 

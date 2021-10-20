@@ -143,7 +143,6 @@ struct FilterView: View {
                 CustomSlider(percentage: 50)
                     .padding(.bottom, 40)
                 
-                
             }
             
             //MARK: - Buttons
@@ -173,8 +172,8 @@ struct FilterView: View {
             }
             
         }.padding(.horizontal, 40)
-            .padding(.bottom, 50)
-            .background(Color.white)
+        .padding(.bottom, 50)
+        .background(Color.white)
     }
 }
 

@@ -30,6 +30,8 @@ struct Home: View {
                             .edgesIgnoringSafeArea(.all)
                     }.offset(x: 0, y: -240)
                 VStack(alignment: .leading) {
+                    
+                    //MARK: - Buttons
                     VStack(alignment: .trailing) {
                         HStack {
                             Spacer()
@@ -61,6 +63,7 @@ struct Home: View {
                         }
                     }
                     
+                    //MARK: - Title and description
                     Text("Pokédex")
                         .foregroundColor(.black)
                         .font(Style.Font.bold.font(32))
@@ -98,8 +101,7 @@ struct Home: View {
                 
                 //MARK: - Modals
                 Sheet(isShowing: $showGeneration) {
-                    Text("Generation")
-                        .frame(maxWidth: .infinity, maxHeight: UIScreen.main.bounds.height * 0.8)
+                    Generation()
                 }
                 Sheet(isShowing: $showFilter) {
                     FilterView()

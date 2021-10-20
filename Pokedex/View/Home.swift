@@ -97,12 +97,16 @@ struct Home: View {
 //                Modal(isShowing: $showFilter) {
 //                    FilterView()
 //                }
+                Sheet(isShowing: $showFilter) {
+                    FilterView()
+                }
                 Modal(isShowing: $showSort) {
                     Text("Sort")
                 }
-            }.sheet(isPresented: $showFilter) {
-                FilterView()
             }
+//            .sheet(isPresented: $showFilter) {
+//                FilterView()
+//            }
             .navigationBarTitleDisplayMode(.inline)
             .navigationBarHidden(true)
         }

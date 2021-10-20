@@ -143,33 +143,7 @@ struct FilterView: View {
                 CustomSlider(percentage: 50)
                     .padding(.bottom, 40)
                 
-//                ZStack(alignment: .center) {
-//                    Capsule()
-//                        .foregroundColor(Color(red: 0.95, green: 0.95, blue: 0.95))
-//                        .frame(height: 8)
-//                    Capsule()
-//                        .foregroundColor(Color(red: 0.92, green: 0.36, blue: 0.38))
-//                        .frame(height: 8)
-//                        .frame(maxWidth: 52) // Here
-//                    HStack(spacing: 10) { // Here
-//                        VStack {
-//                            Circle()
-//                                .strokeBorder(Color(red: 0.92, green: 0.36, blue: 0.38), lineWidth: 4)
-//                                .background(Color.white)
-//                                .frame(width: 20, height: 20)
-//                            Text("200")
-//                                .font(Style.Font.medium.font(12)).foregroundColor(Color(red: 0.45, green: 0.45, blue: 0.46))
-//                        }.offset(x: 0, y: 10)
-//                        VStack {
-//                            Circle()
-//                                .strokeBorder(Color(red: 0.92, green: 0.36, blue: 0.38), lineWidth: 4)
-//                                .background(Color.white)
-//                                .frame(width: 20, height: 20)
-//                            Text("200")
-//                                .font(Style.Font.medium.font(12)).foregroundColor(Color(red: 0.45, green: 0.45, blue: 0.46))
-//                        }.offset(x: 0, y: 10)
-//                    }
-//                }
+                
             }
             
             //MARK: - Buttons
@@ -199,6 +173,8 @@ struct FilterView: View {
             }
             
         }.padding(.horizontal, 40)
+            .padding(.bottom, 50)
+            .background(Color.white)
     }
 }
 

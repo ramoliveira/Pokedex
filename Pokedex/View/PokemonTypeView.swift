@@ -8,16 +8,15 @@
 import SwiftUI
 
 struct PokemonTypeView: View {
-    @State var types: [PokemonType]
+    let types: [PokemonType]
 
     var body: some View {
         HStack {
             ForEach(types, id: \.id) { type in
-                ZStack {
-                    Rectangle()
-                        .cornerRadius(3)
+                ZStack(alignment: .center) {
+                    RoundedRectangle(cornerRadius: 3, style: .circular)
                         .foregroundColor(Style.Color.Pokemon.type(type))
-                    HStack {
+                    HStack(spacing: 0) {
                         Image("Type-"+type.rawValue)
                             .resizable()
                             .foregroundColor(.white)
@@ -26,10 +25,13 @@ struct PokemonTypeView: View {
                         Text(type.rawValue)
                             .font(Style.Font.medium.font(12))
                             .foregroundColor(.white)
+                            .padding(.trailing, 5)
                     }
                 }
-            }.frame(minWidth: 50, maxWidth: 100, minHeight: 25, maxHeight: 25, alignment: .center)
+                .frame(minWidth: 65, maxWidth: 75)
+            }
         }
+        .frame(height: 25)
     }
 }
 

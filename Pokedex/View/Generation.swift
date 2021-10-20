@@ -8,8 +8,7 @@
 import SwiftUI
 
 struct Generation: View {
-    
-    let columns = [
+    private let columns = [
         GridItem(.flexible()),
         GridItem(.flexible())
     ]

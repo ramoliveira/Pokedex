@@ -13,6 +13,7 @@
 		3A73379A271FCA4600888B04 /* GenerationItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3A733799271FCA4600888B04 /* GenerationItem.swift */; };
 		3A73379C271FCDA000888B04 /* Int+RomanNumeral.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3A73379B271FCD9F00888B04 /* Int+RomanNumeral.swift */; };
 		3A73379E27205DE900888B04 /* Generation.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3A73379D27205DE800888B04 /* Generation.swift */; };
+		3A7337A02720992800888B04 /* SortView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3A73379F2720992700888B04 /* SortView.swift */; };
 		3A762E5826F7F854004F64E8 /* Array+Unique.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3A762E5726F7F854004F64E8 /* Array+Unique.swift */; };
 		3A9FBF032715C9D400AFF3D3 /* CustomSlider.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3A9FBF022715C9D400AFF3D3 /* CustomSlider.swift */; };
 		3A9FBF052716264B00AFF3D3 /* TwoHandleSlider.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3A9FBF042716264A00AFF3D3 /* TwoHandleSlider.swift */; };
@@ -70,6 +71,7 @@
 		3A733799271FCA4600888B04 /* GenerationItem.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GenerationItem.swift; sourceTree = "<group>"; };
 		3A73379B271FCD9F00888B04 /* Int+RomanNumeral.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Int+RomanNumeral.swift"; sourceTree = "<group>"; };
 		3A73379D27205DE800888B04 /* Generation.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Generation.swift; sourceTree = "<group>"; };
+		3A73379F2720992700888B04 /* SortView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SortView.swift; sourceTree = "<group>"; };
 		3A762E5726F7F854004F64E8 /* Array+Unique.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Array+Unique.swift"; sourceTree = "<group>"; };
 		3A9FBF022715C9D400AFF3D3 /* CustomSlider.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomSlider.swift; sourceTree = "<group>"; };
 		3A9FBF042716264A00AFF3D3 /* TwoHandleSlider.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TwoHandleSlider.swift; sourceTree = "<group>"; };
@@ -304,6 +306,7 @@
 				3A733797271FA20D00888B04 /* Sheet.swift */,
 				3A733799271FCA4600888B04 /* GenerationItem.swift */,
 				3A73379D27205DE800888B04 /* Generation.swift */,
+				3A73379F2720992700888B04 /* SortView.swift */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -473,6 +476,7 @@
 				E9A61BD426F2BFAB0093DAF2 /* Pokemon.swift in Sources */,
 				3A73379E27205DE900888B04 /* Generation.swift in Sources */,
 				3A73379C271FCDA000888B04 /* Int+RomanNumeral.swift in Sources */,
+				3A7337A02720992800888B04 /* SortView.swift in Sources */,
 				3A9FBF032715C9D400AFF3D3 /* CustomSlider.swift in Sources */,
 				E98BBEA626F0341A00A5B640 /* PokemonTypeResource.swift in Sources */,
 				E9C337E726F41F0800754B21 /* PokemonType.swift in Sources */,

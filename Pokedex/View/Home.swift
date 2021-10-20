@@ -107,8 +107,7 @@ struct Home: View {
                     FilterView()
                 }
                 Sheet(isShowing: $showSort) {
-                    Text("Sort")
-                        .frame(maxWidth: .infinity, maxHeight: UIScreen.main.bounds.height * 0.8)
+                    SortView()
                 }
             }
             .navigationBarTitleDisplayMode(.inline)

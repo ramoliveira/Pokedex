@@ -31,7 +31,7 @@ struct FilterView: View {
                     HStack {
                         ForEach(PokemonType.all, id: \.self) { type in
                             Button {
-                                print(type)
+                                
                             } label: {
                                 Image("Type-\(type)", bundle: .main)
                                     .foregroundColor(Style.Color.Pokemon.type(type))

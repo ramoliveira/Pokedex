@@ -7,7 +7,7 @@
 
 import Foundation
 
-enum PokemonType: String, Identifiable {
+public enum PokemonType: String, Identifiable {
     case bug        = "Bug"
     case dark       = "Dark"
     case dragon     = "Dragon"
@@ -27,11 +27,11 @@ enum PokemonType: String, Identifiable {
     case steel      = "Steel"
     case water      = "Water"
     
-    var id: String {
+    public var id: String {
         return String(describing: rawValue)
     }
     
-    init?(rawValue: String) {
+    public init?(rawValue: String) {
         switch rawValue.lowercased() {
         case "Bug".lowercased():
             self = .bug

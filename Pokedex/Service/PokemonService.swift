@@ -91,7 +91,7 @@ public class PokemonService: PokemonServicing {
             }.eraseToAnyPublisher()
     }
     
-    public func fetchPokemons(startId: Int, finalId: Int) throws -> AnyPublisher<[Pokemon], Error> {
+    public func fetchPokemons(startId: Int, finalId: Int) -> AnyPublisher<[Pokemon], Error> {
         guard startId < finalId else { return Fail(error: PokemonServiceError.invalidRange).eraseToAnyPublisher() }
         let ids = (startId...finalId).map { return $0 }
         return Publishers.MergeMany(ids.map(fetchPokemon(byId:)))

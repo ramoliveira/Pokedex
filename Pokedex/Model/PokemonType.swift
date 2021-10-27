@@ -74,26 +74,26 @@ public enum PokemonType: String, Identifiable {
         }
     }
     
-    static var all: [String] {
+    static var all: [PokemonType] {
         [
-            "Bug",
-            "Dark",
-            "Dragon",
-            "Electric",
-            "Fairy",
-            "Fighting",
-            "Fire",
-            "Flying",
-            "Ghost",
-            "Grass",
-            "Ground",
-            "Ice",
-            "Normal",
-            "Poison",
-            "Psychic",
-            "Rock",
-            "Steel",
-            "Water"
+            .bug,
+            .dark,
+            .dragon,
+            .electric,
+            .fairy,
+            .fighting,
+            .fire,
+            .flying,
+            .ghost,
+            .grass,
+            .ground,
+            .ice,
+            .normal,
+            .poison,
+            .psychic,
+            .rock,
+            .steel,
+            .water
         ]
     }
 }

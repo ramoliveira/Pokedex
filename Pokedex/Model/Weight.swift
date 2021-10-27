@@ -7,13 +7,15 @@
 
 import Foundation
 
+public typealias WeightType = Weight.Kind
+
 public struct Weight {
-    public enum Kind {
-        case light
-        case normal
-        case heavy
+    public enum Kind: String {
+        case light = "Light"
+        case normal = "Normal"
+        case heavy = "Heavy"
         
-        static var all: [Weight.Kind] = [
+        static var all: [WeightType] = [
             .light,
             .normal,
             .heavy
@@ -21,7 +23,7 @@ public struct Weight {
     }
     
     var value: Double
-    var kind: Kind
+    var kind: WeightType
     
     init(value: Int) {
         self.value = Double(value) / 10

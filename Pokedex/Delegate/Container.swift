@@ -19,6 +19,10 @@ class Container {
     func resolve<Object: Any>(_ objectType: Object.Type) -> Object? {
         content[String(describing: Object.self)] as? Object
     }
+    
+    func remove<Object: Any>(_ objectType: Object.Type) {
+        content.removeValue(forKey: String(describing: Object.self))
+    }
 }
 
 class SContainer: Container {

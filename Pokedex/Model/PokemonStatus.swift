@@ -8,13 +8,13 @@
 import Foundation
 
 struct PokemonStatus {
-    let MAX_IV: Double = 31
-    let MAX_EV: Double = 252
-    let MAX_NATURE: Double = 1.1
-    let MIN_IV: Double = 0
-    let MIN_EV: Double = 0
-    let MIN_NATURE: Double = 0.9
-    let LEVEL: Double = 100
+    let MAX_IV      : Double = 31
+    let MAX_EV      : Double = 252
+    let MAX_NATURE  : Double = 1.1
+    let MIN_IV      : Double = 0
+    let MIN_EV      : Double = 0
+    let MIN_NATURE  : Double = 0.9
+    let LEVEL       : Double = 100
 
     var hp: Double
     var attack: Double

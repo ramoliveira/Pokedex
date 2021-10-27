@@ -7,7 +7,7 @@
 
 import Foundation
 
-extension Array where Element == Weight.Kind {
+extension Array where Element == WeightType {
     func contains(_ collection: [Element]) -> Bool {
         var contains: Bool = false
         self.forEach { element in
@@ -19,10 +19,16 @@ extension Array where Element == Weight.Kind {
     }
 }
 
-public struct WeightFilter: Filter {
-    public typealias Args = Weight.Kind
+public class WeightFilter: Filter {
+    public typealias Arg = WeightType
     
-    public func apply(pokemons: [Pokemon], args: Weight.Kind...) -> [Pokemon] {
+    @Published public var args: [WeightType]
+    
+    required public init(args: [WeightType]) {
+        self.args = args
+    }
+    
+    public func apply(pokemons: [Pokemon]) -> [Pokemon] {
         pokemons.filter { pokemon in
             return args.contains(pokemon.weight.kind)
         }

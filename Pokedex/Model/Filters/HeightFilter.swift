@@ -7,7 +7,7 @@
 
 import Foundation
 
-extension Array where Element == Height.Kind {
+extension Array where Element == HeightType {
     func contains(_ collection: [Element]) -> Bool {
         var contains: Bool = false
         self.forEach { element in
@@ -19,10 +19,16 @@ extension Array where Element == Height.Kind {
     }
 }
 
-public struct HeightFilter: Filter {
-    public typealias Args = Height.Kind
+public class HeightFilter: Filter {
+    public typealias Arg = HeightType
     
-    public func apply(pokemons: [Pokemon], args: Height.Kind...) -> [Pokemon] {
+    @Published public var args: [HeightType]
+    
+    required public init(args: [HeightType]) {
+        self.args = args
+    }
+    
+    public func apply(pokemons: [Pokemon]) -> [Pokemon] {
         pokemons.filter { pokemon in
             return args.contains(pokemon.height.kind)
         }

@@ -9,6 +9,7 @@
 /* Begin PBXBuildFile section */
 		3A17DA2F271293FD00216CFE /* HomeRow.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3A17DA2E271293FD00216CFE /* HomeRow.swift */; };
 		3A17DA332714812700216CFE /* FilterView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3A17DA322714812600216CFE /* FilterView.swift */; };
+		3A5B6F8A27272B34006B8D81 /* IdFilter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3A5B6F8927272B34006B8D81 /* IdFilter.swift */; };
 		3A733798271FA20D00888B04 /* Sheet.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3A733797271FA20D00888B04 /* Sheet.swift */; };
 		3A73379A271FCA4600888B04 /* GenerationItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3A733799271FCA4600888B04 /* GenerationItem.swift */; };
 		3A73379C271FCDA000888B04 /* Int+RomanNumeral.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3A73379B271FCD9F00888B04 /* Int+RomanNumeral.swift */; };
@@ -78,6 +79,7 @@
 /* Begin PBXFileReference section */
 		3A17DA2E271293FD00216CFE /* HomeRow.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeRow.swift; sourceTree = "<group>"; };
 		3A17DA322714812600216CFE /* FilterView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FilterView.swift; sourceTree = "<group>"; };
+		3A5B6F8927272B34006B8D81 /* IdFilter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = IdFilter.swift; sourceTree = "<group>"; };
 		3A733797271FA20D00888B04 /* Sheet.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Sheet.swift; sourceTree = "<group>"; };
 		3A733799271FCA4600888B04 /* GenerationItem.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GenerationItem.swift; sourceTree = "<group>"; };
 		3A73379B271FCD9F00888B04 /* Int+RomanNumeral.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Int+RomanNumeral.swift"; sourceTree = "<group>"; };
@@ -202,6 +204,7 @@
 				3ADF285C27225D8A00B1E34F /* WeaknessFilter.swift */,
 				3ADF28602722606000B1E34F /* HeightFilter.swift */,
 				3ADF286627226AD400B1E34F /* WeightFilter.swift */,
+				3A5B6F8927272B34006B8D81 /* IdFilter.swift */,
 			);
 			path = Filters;
 			sourceTree = "<group>";
@@ -516,6 +519,7 @@
 				3ADF28542722231500B1E34F /* HomePokemon.swift in Sources */,
 				E98BBEA426F033E300A5B640 /* NamedAPIResource.swift in Sources */,
 				3ADF28652722691000B1E34F /* Weight.swift in Sources */,
+				3A5B6F8A27272B34006B8D81 /* IdFilter.swift in Sources */,
 				3ADF285D27225D8A00B1E34F /* WeaknessFilter.swift in Sources */,
 				3AC75321271210A100B6C40E /* Home.swift in Sources */,
 				3ADF285F27225F1100B1E34F /* Height.swift in Sources */,

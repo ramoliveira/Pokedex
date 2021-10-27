@@ -26,15 +26,16 @@ struct Style {
     }
     
     struct Color {
-        struct Text {
-            static let description: SwiftUI.Color = SwiftUI.Color(red: 0.45, green: 0.45, blue: 0.46)
-            static let title: SwiftUI.Color = SwiftUI.Color(red: 0.09, green: 0.09, blue: 0.106)
-            static let name: SwiftUI.Color = SwiftUI.Color.white
-            static let id: SwiftUI.Color = SwiftUI.Color(red: 0.23, green: 0.23, blue: 0.27)
+        struct Height {
+            static func type(_ heightType: HeightType) -> SwiftUI.Color {
+                SwiftUI.Color("Height-"+heightType.rawValue)
+            }
         }
         
-        struct View {
-            static let textField: SwiftUI.Color = SwiftUI.Color(red: 0.95, green: 0.95, blue: 0.95)
+        struct Weight {
+            static func type(_ weightType: WeightType) -> SwiftUI.Color {
+                SwiftUI.Color("Weight-"+weightType.rawValue)
+            }
         }
         
         struct Pokemon {

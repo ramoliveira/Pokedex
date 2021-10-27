@@ -19,10 +19,16 @@ extension Array where Element == PokemonType {
     }
 }
 
-public struct TypeFilter: Filter {
-    public typealias Args = PokemonType
+public class TypeFilter: Filter {
+    public typealias Arg = PokemonType
     
-    public func apply(pokemons: [Pokemon], args: PokemonType...) -> [Pokemon] {
+    @Published public var args: [PokemonType]
+    
+    required public init(args: [PokemonType]) {
+        self.args = args
+    }
+    
+    public func apply(pokemons: [Pokemon]) -> [Pokemon] {
         pokemons.filter { pokemon in
             return pokemon.types.contains(args)
         }

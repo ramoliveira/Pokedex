@@ -8,6 +8,12 @@
 import SwiftUI
 
 struct FilterView: View {
+    @EnvironmentObject private var typeFilter: TypeFilter
+    @EnvironmentObject private var weaknessFilter: WeaknessFilter
+    @EnvironmentObject private var heightFilter: HeightFilter
+    @EnvironmentObject private var weightFilter: WeightFilter
+    @EnvironmentObject private var idFilter: IdFilter
+    
     var body: some View {
         VStack(alignment: .leading) {
             Group {
@@ -31,12 +37,23 @@ struct FilterView: View {
                     HStack {
                         ForEach(PokemonType.all, id: \.self) { type in
                             Button {
-                                
+                                typeFilter.toggle(type)
                             } label: {
-                                Image("Type-\(type)", bundle: .main)
-                                    .foregroundColor(Style.Color.Pokemon.type(type))
+                                if typeFilter.args.contains(type) {
+                                    ZStack {
+                                        Circle()
+                                            .foregroundColor(Style.Color.Pokemon.type(type))
+                                        Image("Type-\(type.rawValue)", bundle: .main)
+                                            .foregroundColor(.white)
+                                    }
                                     .frame(width: 50, height: 50, alignment: .center)
                                     .padding(.horizontal, 5)
+                                } else {
+                                    Image("Type-\(type.rawValue)", bundle: .main)
+                                        .foregroundColor(Style.Color.Pokemon.type(type))
+                                        .frame(width: 50, height: 50, alignment: .center)
+                                        .padding(.horizontal, 5)
+                                }
                             }
                         }
                     }
@@ -52,12 +69,23 @@ struct FilterView: View {
                     HStack {
                         ForEach(PokemonType.all, id: \.self) { type in
                             Button {
-                                print(type)
+                                weaknessFilter.toggle(type)
                             } label: {
-                                Image("Type-\(type)", bundle: .main)
-                                    .foregroundColor(Style.Color.Pokemon.type(type))
+                                if weaknessFilter.args.contains(type) {
+                                    ZStack {
+                                        Circle()
+                                            .foregroundColor(Style.Color.Pokemon.type(type))
+                                        Image("Type-\(type.rawValue)", bundle: .main)
+                                            .foregroundColor(.white)
+                                    }
                                     .frame(width: 50, height: 50, alignment: .center)
                                     .padding(.horizontal, 5)
+                                } else {
+                                    Image("Type-\(type.rawValue)", bundle: .main)
+                                        .foregroundColor(Style.Color.Pokemon.type(type))
+                                        .frame(width: 50, height: 50, alignment: .center)
+                                        .padding(.horizontal, 5)
+                                }
                             }
                         }
                     }
@@ -71,29 +99,26 @@ struct FilterView: View {
                     .padding(.bottom, 10)
                 ScrollView(.horizontal, showsIndicators: false) {
                     HStack {
-                        Button {
-                            print("short")
-                        } label: {
-                            Image("Short", bundle: .main)
-                                .foregroundColor(Color(red: 1, green: 0.77, blue: 0.90))
-                                .frame(width: 50, height: 50, alignment: .center)
-                                .padding(.horizontal, 5)
-                        }
-                        Button {
-                            print("medium")
-                        } label: {
-                            Image("Medium", bundle: .main)
-                                .foregroundColor(Color(red: 0.68, green: 0.75, blue: 0.84))
-                                .frame(width: 50, height: 50, alignment: .center)
-                                .padding(.horizontal, 5)
-                        }
-                        Button {
-                            print("tall")
-                        } label: {
-                            Image("Tall", bundle: .main)
-                                .foregroundColor(Color(red: 0.67, green: 0.67, blue: 0.72))
-                                .frame(width: 50, height: 50, alignment: .center)
-                                .padding(.horizontal, 5)
+                        ForEach(HeightType.all, id: \.self) { type in
+                            Button {
+                                heightFilter.toggle(type)
+                            } label: {
+                                if heightFilter.args.contains(type) {
+                                    ZStack {
+                                        Circle()
+                                            .foregroundColor(Style.Color.Height.type(type))
+                                        Image(type.rawValue, bundle: .main)
+                                            .foregroundColor(.white)
+                                    }
+                                    .frame(width: 50, height: 50, alignment: .center)
+                                    .padding(.horizontal, 5)
+                                } else {
+                                    Image(type.rawValue, bundle: .main)
+                                        .foregroundColor(Style.Color.Height.type(type))
+                                        .frame(width: 50, height: 50, alignment: .center)
+                                        .padding(.horizontal, 5)
+                                }
+                            }
                         }
                     }
                 }.padding(.bottom, 15)
@@ -106,29 +131,26 @@ struct FilterView: View {
                     .padding(.bottom, 10)
                 ScrollView(.horizontal, showsIndicators: false) {
                     HStack {
-                        Button {
-                            print("light")
-                        } label: {
-                            Image("Light", bundle: .main)
-                                .foregroundColor(Color(red: 0.6, green: 0.8, blue: 0.49))
-                                .frame(width: 50, height: 50, alignment: .center)
-                                .padding(.horizontal, 5)
-                        }
-                        Button {
-                            print("normal")
-                        } label: {
-                            Image("Normal", bundle: .main)
-                                .foregroundColor(Color(red: 0.34, green: 0.7, blue: 0.86))
-                                .frame(width: 50, height: 50, alignment: .center)
-                                .padding(.horizontal, 5)
-                        }
-                        Button {
-                            print("heavy")
-                        } label: {
-                            Image("Heavy", bundle: .main)
-                                .foregroundColor(Color(red: 0.35, green: 0.57, blue: 0.65))
-                                .frame(width: 50, height: 50, alignment: .center)
-                                .padding(.horizontal, 5)
+                        ForEach(WeightType.all, id: \.self) { type in
+                            Button {
+                                weightFilter.toggle(type)
+                            } label: {
+                                if weightFilter.args.contains(type) {
+                                    ZStack {
+                                        Circle()
+                                            .foregroundColor(Style.Color.Weight.type(type))
+                                        Image(type.rawValue, bundle: .main)
+                                            .foregroundColor(.white)
+                                    }
+                                    .frame(width: 50, height: 50, alignment: .center)
+                                    .padding(.horizontal, 5)
+                                } else {
+                                    Image(type.rawValue, bundle: .main)
+                                        .foregroundColor(Style.Color.Weight.type(type))
+                                        .frame(width: 50, height: 50, alignment: .center)
+                                        .padding(.horizontal, 5)
+                                }
+                            }
                         }
                     }
                 }.padding(.bottom, 15)
@@ -149,7 +171,9 @@ struct FilterView: View {
             Group {
                 HStack(alignment: .center, spacing: 14)  {
                     Button {
-                        print("Reset")
+                        withAnimation {
+                            reset()
+                        }
                     } label: {
                         Text("Reset")
                             .font(Style.Font.regular.font(16))
@@ -170,10 +194,17 @@ struct FilterView: View {
                     }
                 }
             }
-            
         }.padding(.horizontal, 40)
         .padding(.bottom, 50)
         .background(Color.white)
+    }
+    
+    func reset() {
+        typeFilter.reset()
+        weaknessFilter.reset()
+        heightFilter.reset()
+        weightFilter.reset()
+        idFilter.reset()
     }
 }
 

@@ -7,8 +7,34 @@
 
 import Foundation
 
-public protocol Filter {
-    associatedtype Args
+public protocol Filter: ObservableObject {
+    associatedtype Arg
     
-    func apply(pokemons: [Pokemon], args: Args...) -> [Pokemon]
+    var args: [Arg] { get set }
+    var isOn: Bool { get }
+    
+    init(args: [Arg])
+    
+    func apply(pokemons: [Pokemon]) -> [Pokemon]
+    func toggle(_ arg: Arg)
+    func reset()
+}
+
+public extension Filter {
+    var isOn: Bool {
+        return !args.isEmpty
+    }
+    
+    func toggle(_ arg: Arg) where Arg: Equatable {
+        if args.contains(arg) {
+            guard let index = args.firstIndex(of: arg) else { return }
+            args.remove(at: index)
+        } else {
+            args.append(arg)
+        }
+    }
+    
+    func reset() {
+        args.removeAll()
+    }
 }

@@ -7,28 +7,28 @@
 
 import Foundation
 
-
+public typealias HeightType = Height.Kind
 
 public struct Height {
-    public enum Kind {
-        case small
-        case medium
-        case tall
+    public enum Kind: String {
+        case short = "Short"
+        case medium = "Medium"
+        case tall = "Tall"
         
-        static var all: [Height.Kind] = [
-            .small,
+        static var all: [HeightType] = [
+            .short,
             .medium,
             .tall
         ]
     }
     
     var value: Double
-    var kind: Kind
+    var kind: HeightType
     
     init(value: Int) {
         self.value = Double(value) / 10
         if self.value < 1 {
-            self.kind = .small
+            self.kind = .short
         } else if self.value < 1.7 {
             self.kind = .medium
         } else {

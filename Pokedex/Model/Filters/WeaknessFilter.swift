@@ -7,10 +7,16 @@
 
 import Foundation
 
-public struct WeaknessFilter: Filter {
-    public typealias Args = PokemonType
+public class WeaknessFilter: Filter {
+    public typealias Arg = PokemonType
     
-    public func apply(pokemons: [Pokemon], args: PokemonType...) -> [Pokemon] {
+    @Published public var args: [PokemonType]
+    
+    required public init(args: [PokemonType]) {
+        self.args = args
+    }
+    
+    public func apply(pokemons: [Pokemon]) -> [Pokemon] {
         pokemons.filter { pokemon in
             return pokemon.defenses.weaknesses.contains(args)
         }

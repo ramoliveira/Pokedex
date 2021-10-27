@@ -12,14 +12,17 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
 
     var window: UIWindow?
 
-
-    func scene(_ scene: UIScene, willConnectTo session: UISceneSession, options connectionOptions: UIScene.ConnectionOptions) {
+    fileprivate func registerDependencies() {
         SContainer.shared.register(PokemonServicing.self) { _ in
             PokemonService()
         }
         SContainer.shared.register(PokemonViewModel.self) { resolver in
             PokemonViewModel(service: resolver.resolve(PokemonServicing.self)!)
         }
+    }
+    
+    func scene(_ scene: UIScene, willConnectTo session: UISceneSession, options connectionOptions: UIScene.ConnectionOptions) {
+        registerDependencies()
         
         let contentView = Home()
             .preferredColorScheme(.light)

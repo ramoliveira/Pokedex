@@ -8,6 +8,12 @@
 import SwiftUI
 
 struct Home: View {
+    @ObservedObject private var typeFilter: TypeFilter = TypeFilter(args: [PokemonType]())
+    @ObservedObject private var weaknessFilter: WeaknessFilter = WeaknessFilter(args: [PokemonType]())
+    @ObservedObject private var heightFilter: HeightFilter = HeightFilter(args: [HeightType]())
+    @ObservedObject private var weightFilter: WeightFilter = WeightFilter(args: [WeightType]())
+    @ObservedObject private var idFilter: IdFilter = IdFilter(args: [Int]())
+    
     let pokemon = Pokemon.mock
     var pokemons: [Pokemon] {
         return [pokemon]
@@ -113,6 +119,11 @@ struct Home: View {
             .navigationBarTitleDisplayMode(.inline)
             .navigationBarHidden(true)
         }
+        .environmentObject(typeFilter)
+        .environmentObject(weaknessFilter)
+        .environmentObject(heightFilter)
+        .environmentObject(weightFilter)
+        .environmentObject(idFilter)
     }
 }
 

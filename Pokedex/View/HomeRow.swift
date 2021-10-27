@@ -27,10 +27,10 @@ struct HomeRow: View {
                         VStack(alignment: .leading) {
                             Text(String(format: "#%03d", pokemon.id))
                                 .font(Style.Font.bold.font(12))
-                                .foregroundColor(Style.Color.Text.id)
+                                .foregroundColor(Color(red: 23/255, green: 23/255, blue: 27/255, opacity: 0.6))
                             Text(pokemon.name)
                                 .font(Style.Font.bold.font(26))
-                                .foregroundColor(Style.Color.Text.name)
+                                .foregroundColor(Color.white)
                                 .padding(.bottom, -5)
                             PokemonTypeView(types: pokemon.types)
                                 .padding(.all, 0)

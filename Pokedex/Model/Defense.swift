@@ -10,7 +10,7 @@ import Foundation
 public extension Array where Element == Defense {
     var weaknesses: [PokemonType] {
         self.filter { defense in
-            return defense.value == .double
+            return defense.effectiveness == .double
         }.map { defense in
             defense.against
         }
@@ -54,15 +54,15 @@ public struct Defense {
     }
     
     var against: PokemonType
-    var value: Effectiveness
+    var effectiveness: Effectiveness
     
     init(against: PokemonType, value: Effectiveness) {
         self.against = against
-        self.value = value
+        self.effectiveness = value
     }
     
     init(against: PokemonType, value: Double) {
         self.against = against
-        self.value = Effectiveness(rawValue: value) ?? .normal
+        self.effectiveness = Effectiveness(rawValue: value) ?? .normal
     }
 }
